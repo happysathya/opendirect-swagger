@@ -164,7 +164,7 @@
         "summary" : "Gets a list of assignments.",
         "description" : "Gets a list of all assignments that belong to the account.",
         "produces" : [ "application/json" ],
-        "tags" : [ "Accounts" ],
+        "tags" : [ "Assignments" ],
         "parameters" : [ {
           "name" : "AccessToken",
           "description" : "OAUTH Token",
