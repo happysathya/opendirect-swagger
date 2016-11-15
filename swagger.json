@@ -2071,6 +2071,97 @@
         }
       }
     },
+    "/organizations" : {
+      "get" : {
+        "summary" : "Gets a list of all organizations that the user has access to.",
+        "description" : "Gets a list of all organizations that the user has access to. The list may contain both advertiser and agency organizations depending on the caller’s access. For example, if the caller is an advertiser, the list might contain only the advertiser’s organization objects; however, if the caller is an agency, the list will contain the agency’s organization objects and the organization objects of the advertisers whose accounts that they manage.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "Organizations" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of all organizations.",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Organization"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Adds an account.",
+        "description" : "The account resource associates an organization ID for a buyer with an organization ID for an advertiser. Account URIs enable account creation and account search.",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "Accounts" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "Account",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Account"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Newly created account.",
+            "schema" : {
+              "$ref" : "#/definitions/Account"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
     "/products" : {
       "get" : {
         "summary" : "List of all products.",
