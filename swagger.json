@@ -518,6 +518,64 @@
           "name" : "disable",
           "in" : "query",
           "required" : true,
+          "type" : "boolean",
+          "default" : true,
+          "allowEmptyValue" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated assignment.",
+            "schema" : {
+              "$ref" : "#/definitions/Assignment"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "Changes the status to “Inactive.”",
+        "description" : "Prevents a creative from running or stops a creative that is currently running.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "Assignments" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "assignmentId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "disable",
+          "in" : "query",
+          "required" : true,
+          "type" : "boolean",
+          "default" : true,
           "allowEmptyValue" : true
         } ],
         "responses" : {
@@ -1495,6 +1553,502 @@
         "responses" : {
           "200" : {
             "description" : "OK"
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}?book" : {
+      "put" : {
+        "summary" : "Begins the booking process for the line.",
+        "description" : "The booking process may be asynchronous.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "OrderLines" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "orderId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "lineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "book",
+          "in" : "query",
+          "required" : true,
+          "type" : "boolean",
+          "default" : true,
+          "allowEmptyValue" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated line.",
+            "schema" : {
+              "$ref" : "#/definitions/Line"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "Begins the booking process for the line.",
+        "description" : "The booking process may be asynchronous.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "OrderLines" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "orderId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "lineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "book",
+          "in" : "query",
+          "required" : true,
+          "type" : "boolean",
+          "default" : true,
+          "allowEmptyValue" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated line.",
+            "schema" : {
+              "$ref" : "#/definitions/Line"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}?reserve" : {
+      "put" : {
+        "summary" : "Reserves the line.",
+        "description" : "Reserves the line. The reserve process may be asynchronous. To reserve a line, the line must be in the Draft state. If successfully reserved, the line moves to the Reserved state; otherwise, it moves to Declined and StateChangedReason is set.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "OrderLines" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "orderId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "lineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "reserve",
+          "in" : "query",
+          "required" : true,
+          "type" : "boolean",
+          "default" : true,
+          "allowEmptyValue" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated line.",
+            "schema" : {
+              "$ref" : "#/definitions/Line"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "Reserves the line.",
+        "description" : "Reserves the line. The reserve process may be asynchronous. To reserve a line, the line must be in the Draft state. If successfully reserved, the line moves to the Reserved state; otherwise, it moves to Declined and StateChangedReason is set.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "OrderLines" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "orderId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "lineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "reserve",
+          "in" : "query",
+          "required" : true,
+          "type" : "boolean",
+          "default" : true,
+          "allowEmptyValue" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated line.",
+            "schema" : {
+              "$ref" : "#/definitions/Line"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}?cancel" : {
+      "put" : {
+        "summary" : "Cancels the line.",
+        "description" : "Cancels the line. To cancel a line, the line must be in the Reserved, Booked, or InFlight state. If successfully canceled, the line moves to the Canceled state. If the status was InFlight, StateChangedReason is set.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "OrderLines" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "orderId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "lineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "cancel",
+          "in" : "query",
+          "required" : true,
+          "type" : "boolean",
+          "default" : true,
+          "allowEmptyValue" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated line.",
+            "schema" : {
+              "$ref" : "#/definitions/Line"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "Cancels the line.",
+        "description" : "Cancels the line. To cancel a line, the line must be in the Reserved, Booked, or InFlight state. If successfully canceled, the line moves to the Canceled state. If the status was InFlight, StateChangedReason is set.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "OrderLines" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "orderId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "lineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "cancel",
+          "in" : "query",
+          "required" : true,
+          "type" : "boolean",
+          "default" : true,
+          "allowEmptyValue" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated line.",
+            "schema" : {
+              "$ref" : "#/definitions/Line"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}?reset" : {
+      "put" : {
+        "summary" : "Resets a line back to the Draft state.",
+        "description" : "Resets a line back to the Draft state. To reset a line, the line must be in the Reserved or Declined state.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "OrderLines" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "orderId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "lineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "reset",
+          "in" : "query",
+          "required" : true,
+          "type" : "boolean",
+          "default" : true,
+          "allowEmptyValue" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated line.",
+            "schema" : {
+              "$ref" : "#/definitions/Line"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "Resets a line back to the Draft state.",
+        "description" : "Resets a line back to the Draft state. To reset a line, the line must be in the Reserved or Declined state.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "OrderLines" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "orderId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "lineId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "reset",
+          "in" : "query",
+          "required" : true,
+          "type" : "boolean",
+          "default" : true,
+          "allowEmptyValue" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated line.",
+            "schema" : {
+              "$ref" : "#/definitions/Line"
+            }
           },
           "400" : {
             "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
