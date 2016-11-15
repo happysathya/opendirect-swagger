@@ -509,6 +509,12 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
+        }, {
+          "name" : "AdStatus",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "Pending", "Approved", "Reje" ]
         } ],
         "responses" : {
           "200" : {
