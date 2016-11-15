@@ -492,7 +492,7 @@
         }
       }
     },
-    "/accounts/{id}/creatives" : {
+    "/accounts/{accountId}/creatives" : {
       "get" : {
         "summary" : "Gets a list of all creatives.",
         "description" : "Gets a list of all creatives that belong to the account.",
@@ -505,7 +505,7 @@
           "required" : true,
           "type" : "string"
         }, {
-          "name" : "id",
+          "name" : "accountId",
           "in" : "path",
           "required" : true,
           "type" : "string"
@@ -553,7 +553,7 @@
           "required" : true,
           "type" : "string"
         }, {
-          "name" : "id",
+          "name" : "accountId",
           "in" : "path",
           "required" : true,
           "type" : "string"
@@ -593,7 +593,7 @@
         }
       }
     },
-    "/accounts/{id}/creatives/{creativeId}" : {
+    "/accounts/{accountId}/creatives/{creativeId}" : {
       "get" : {
         "summary" : "Gets the specified creative.",
         "description" : "Gets the specified creative that belong to the account.",
@@ -606,7 +606,7 @@
           "required" : true,
           "type" : "string"
         }, {
-          "name" : "id",
+          "name" : "accountId",
           "in" : "path",
           "required" : true,
           "type" : "string"
@@ -656,7 +656,7 @@
           "required" : true,
           "type" : "string"
         }, {
-          "name" : "id",
+          "name" : "accountId",
           "in" : "path",
           "required" : true,
           "type" : "string"
@@ -713,7 +713,7 @@
           "required" : true,
           "type" : "string"
         }, {
-          "name" : "id",
+          "name" : "accountId",
           "in" : "path",
           "required" : true,
           "type" : "string"
@@ -768,7 +768,7 @@
           "required" : true,
           "type" : "string"
         }, {
-          "name" : "id",
+          "name" : "accountId",
           "in" : "path",
           "required" : true,
           "type" : "string"
