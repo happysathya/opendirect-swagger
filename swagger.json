@@ -514,7 +514,7 @@
           "in" : "query",
           "required" : false,
           "type" : "string",
-          "enum" : [ "Pending", "Approved", "Reje" ]
+          "enum" : [ "Pending", "Approved", "Rejected" ]
         } ],
         "responses" : {
           "200" : {
