@@ -599,107 +599,6 @@
         }
       }
     },
-    "/accounts/{accountId}/orders" : {
-      "get" : {
-        "summary" : "Gets a list of all orders.",
-        "description" : "Gets a list of all orders that belong to the account",
-        "tags" : [ "Orders" ],
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "AccessToken",
-          "description" : "OAUTH Token",
-          "in" : "header",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "accountId",
-          "in" : "path",
-          "required" : true,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "List of all orders.",
-            "schema" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/definitions/Order"
-              }
-            }
-          },
-          "400" : {
-            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
-            "schema" : {
-              "$ref" : "#/definitions/Error"
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
-            "schema" : {
-              "$ref" : "#/definitions/Error"
-            }
-          },
-          "500" : {
-            "description" : "Internal server error. Return for server-related errors.",
-            "schema" : {
-              "$ref" : "#/definitions/Error"
-            }
-          }
-        }
-      },
-      "post" : {
-        "summary" : "Adds an order.",
-        "description" : "Adds an order to the account.",
-        "tags" : [ "Orders" ],
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "AccessToken",
-          "description" : "OAUTH Token",
-          "in" : "header",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "accountId",
-          "in" : "path",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "Order",
-          "in" : "body",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/Order"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Newly added order.",
-            "schema" : {
-              "$ref" : "#/definitions/Order"
-            }
-          },
-          "400" : {
-            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
-            "schema" : {
-              "$ref" : "#/definitions/Error"
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
-            "schema" : {
-              "$ref" : "#/definitions/Error"
-            }
-          },
-          "500" : {
-            "description" : "Internal server error. Return for server-related errors.",
-            "schema" : {
-              "$ref" : "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
     "/accounts/{accountId}/creatives/{creativeId}" : {
       "get" : {
         "summary" : "Gets the specified creative.",
@@ -888,6 +787,107 @@
         "responses" : {
           "200" : {
             "description" : "OK"
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{accountId}/orders" : {
+      "get" : {
+        "summary" : "Gets a list of all orders.",
+        "description" : "Gets a list of all orders that belong to the account",
+        "tags" : [ "Orders" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of all orders.",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Order"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Adds an order.",
+        "description" : "Adds an order to the account.",
+        "tags" : [ "Orders" ],
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "Order",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Order"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Newly added order.",
+            "schema" : {
+              "$ref" : "#/definitions/Order"
+            }
           },
           "400" : {
             "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
