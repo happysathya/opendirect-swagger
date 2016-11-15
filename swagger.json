@@ -850,7 +850,7 @@
         }
       }
     },
-    "/products/{id}" : {
+    "/products/{productId}" : {
       "get" : {
         "summary" : "Gets the specified Product from the product catalog.",
         "description" : "Gets the specified Product from the product catalog.",
@@ -861,7 +861,7 @@
           "required" : true,
           "type" : "string"
         }, {
-          "name" : "id",
+          "name" : "productId",
           "in" : "path",
           "required" : true,
           "type" : "number",
