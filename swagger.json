@@ -446,7 +446,9 @@
           "type" : "string"
         } ],
         "responses" : {
-          "200" : "",
+          "200" : {
+            "description" : ""
+          },
           "400" : {
             "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
             "schema" : {
