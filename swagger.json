@@ -72,7 +72,10 @@
         } ],
         "responses" : {
           "200" : {
-            "$ref" : "#/definitions/Account"
+            "description" : "Newly created account.",
+            "schema" : {
+              "$ref" : "#/definitions/Account"
+            }
           },
           "400" : {
             "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
