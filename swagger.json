@@ -176,6 +176,28 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
+        }, {
+          "name" : "CreativeId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "LineId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "StartDate",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "format" : "date"
+        }, {
+          "name" : "EndDate",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "format" : "date"
         } ],
         "responses" : {
           "200" : {
