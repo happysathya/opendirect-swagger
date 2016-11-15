@@ -1,0 +1,1193 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "OpenDirect 1.5.1 API",
+    "version" : "1.0"
+  },
+  "host" : "localhost:8080",
+  "schemes" : [ "https", "http" ],
+  "paths" : {
+    "/accounts" : {
+      "get" : {
+        "summary" : "Gets a list of accounts that the user has access to.",
+        "description" : "The account resource associates an organization ID for a buyer with an organization ID for an advertiser. Account URIs enable account creation and account search.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "Accounts" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of all accounts",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Account"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/products" : {
+      "get" : {
+        "summary" : "List of all products.",
+        "description" : "Gets the list of Products from the product catalog. Products are defined by the publisher with details as specified in the Product object. Only buyers/advertisers who have obtained an Organization ID and Account ID (Buyer ID/Advertiser ID) from the publisher shall issue this request. Requests from buyers and advertisers who do not have the publisher obtained IDs shall return an error.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "Products" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "An array of products",
+            "examples" : {
+              "application/json" : "{\n\t\"Products\": [{\n\t\t\"AdFormatTypes\": [\"Flash\", \"Tag\", \"Image\"],\n\t\t\"BasePrice\": 1.31,\n\t\t\"Currency\": \"USD\",\n\t\t\"DeliveryType\": \"Guaranteed\",\n\t\t\"Descripion\": \"A description of the product for display purposes\",\n\t\t\"Domain\": \"mydomain.com\",\n\t\t\"EstimatedDailyAvails\": \"Hundreds of Thousands\",\n\t\t\"Geometry\": [{\n\t\t\t\"Height\": 160,\n\t\t\t\"Width\": 600\n\t\t}],\n\t\t\"HttpsCompatible\": 0,\n\t\t\"Icon\": \"http://domain/path/icon.jpg\",\n\t\t\"Id\": \"456366\",\n\t\t\"InventoryType\": {\n\t\t\t\"Name\": \"Desktop\"\n\t\t},\n\t\t\"Languages\": [\"EN\"],\n\t\t\"Name\": \"Unique Product Name\",\n\t\t\"MaturityLevel\": {\n\t\t\t\"Level\": \"Over12\"\n\t\t},\n\t\t\"MaxDuration\": 30,\n\t\t\"MinDuration\": 1,\n\t\t\"MinSpend\": 30.00,\n\t\t\"Position\": \"AboveFold\",\n\t\t\"ProductTags\": \"Foo Bar Zoo\",\n\t\t\"RateType\": \"CPM\",\n\t\t\"TargetTypes\": [\"2342\", \"3355\"],\n\t\t\"TimeZone\": \"Eastern Standard Time\",\n\t\t\"Url\": \"http://domain/path/creativespec.aspx\"\n\t}]\n}"
+            },
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Product"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/products/{id}" : {
+      "get" : {
+        "summary" : "Gets the specified Product from the product catalog.",
+        "description" : "Gets the specified Product from the product catalog.",
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "number",
+          "format" : "int64"
+        } ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "Products" ],
+        "responses" : {
+          "200" : {
+            "description" : "A specified product.",
+            "examples" : {
+              "application/json" : "{\n\t\t\"AdFormatTypes\": [\"Flash\", \"Tag\", \"Image\"],\n\t\t\"BasePrice\": 1.31,\n\t\t\"Currency\": \"USD\",\n\t\t\"DeliveryType\": \"Guaranteed\",\n\t\t\"Descripion\": \"A description of the product for display purposes\",\n\t\t\"Domain\": \"mydomain.com\",\n\t\t\"EstimatedDailyAvails\": \"Hundreds of Thousands\",\n\t\t\"Geometry\": [{\n\t\t\t\"Height\": 160,\n\t\t\t\"Width\": 600\n\t\t}],\n\t\t\"HttpsCompatible\": 0,\n\t\t\"Icon\": \"http://domain/path/icon.jpg\",\n\t\t\"Id\": \"456366\",\n\t\t\"InventoryType\": {\n\t\t\t\"Name\": \"Desktop\"\n\t\t},\n\t\t\"Languages\": [\"EN\"],\n\t\t\"Name\": \"Unique Product Name\",\n\t\t\"MaturityLevel\": {\n\t\t\t\"Level\": \"Over12\"\n\t\t},\n\t\t\"MaxDuration\": 30,\n\t\t\"MinDuration\": 1,\n\t\t\"MinSpend\": 30.00,\n\t\t\"Position\": \"AboveFold\",\n\t\t\"ProductTags\": \"Foo Bar Zoo\",\n\t\t\"RateType\": \"CPM\",\n\t\t\"TargetTypes\": [\"2342\", \"3355\"],\n\t\t\"TimeZone\": \"Eastern Standard Time\",\n\t\t\"Url\": \"http://domain/path/creativespec.aspx\"\n}"
+            },
+            "schema" : {
+              "$ref" : "#/definitions/Product"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/products/search" : {
+      "post" : {
+        "summary" : "Gets a list of Products from the product catalog that matches the specified filter criteria",
+        "description" : "Gets a list of products from the publisher’s product catalog based on the criteria specified in the body of the request.",
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "productSearch",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ProductSearch"
+          }
+        } ],
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "Products" ],
+        "responses" : {
+          "200" : {
+            "description" : "An array of products",
+            "examples" : {
+              "application/json" : "{\n\t\"Products\": [{\n\t\t\"AdFormatTypes\": [\"Flash\", \"Tag\", \"Image\"],\n\t\t\"BasePrice\": 1.31,\n\t\t\"Currency\": \"USD\",\n\t\t\"DeliveryType\": \"Guaranteed\",\n\t\t\"Descripion\": \"A description of the product for display purposes\",\n\t\t\"Domain\": \"mydomain.com\",\n\t\t\"EstimatedDailyAvails\": \"Hundreds of Thousands\",\n\t\t\"Geometry\": [{\n\t\t\t\"Height\": 160,\n\t\t\t\"Width\": 600\n\t\t}],\n\t\t\"HttpsCompatible\": 0,\n\t\t\"Icon\": \"http://domain/path/icon.jpg\",\n\t\t\"Id\": \"456366\",\n\t\t\"InventoryType\": {\n\t\t\t\"Name\": \"Desktop\"\n\t\t},\n\t\t\"Languages\": [\"EN\"],\n\t\t\"Name\": \"Unique Product Name\",\n\t\t\"MaturityLevel\": {\n\t\t\t\"Level\": \"Over12\"\n\t\t},\n\t\t\"MaxDuration\": 30,\n\t\t\"MinDuration\": 1,\n\t\t\"MinSpend\": 30.00,\n\t\t\"Position\": \"AboveFold\",\n\t\t\"ProductTags\": \"Foo Bar Zoo\",\n\t\t\"RateType\": \"CPM\",\n\t\t\"TargetTypes\": [\"2342\", \"3355\"],\n\t\t\"TimeZone\": \"Eastern Standard Time\",\n\t\t\"Url\": \"http://domain/path/creativespec.aspx\"\n\t}]\n}"
+            },
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Product"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/products/avails" : {
+      "post" : {
+        "summary" : "Gets pricing and avails information (see ProductAvails) for the specified products.",
+        "description" : "Gets the availability and pricing information for a specified list of products based on flight dates, quantity and targeting. The body of the request contains the list of products and flight details. The body of the response contains a collection of ProductAvails objects.",
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "productAvailSearch",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ProductAvailsSearch"
+          }
+        } ],
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "Products" ],
+        "responses" : {
+          "200" : {
+            "description" : "An array of productAvails",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ProductAvails"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "AdFormatType" : {
+      "type" : "object",
+      "properties" : {
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated opaque ID that uniquely identifies this resource."
+        },
+        "Name" : {
+          "type" : "string",
+          "description" : "The ad format’s display name."
+        }
+      }
+    },
+    "AdPosition" : {
+      "type" : "object",
+      "properties" : {
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated opaque ID that uniquely identifies this resource."
+        },
+        "Name" : {
+          "type" : "string",
+          "description" : "The ad position’s display name."
+        }
+      }
+    },
+    "ContactType" : {
+      "type" : "object",
+      "properties" : {
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated opaque ID that uniquely identifies this resource. (Max 36 characters)."
+        },
+        "Name" : {
+          "type" : "string",
+          "description" : "The type’s display name."
+        }
+      }
+    },
+    "Country" : {
+      "type" : "object",
+      "properties" : {
+        "IsoCode" : {
+          "type" : "string",
+          "description" : "The country’s two-character ISO code."
+        }
+      }
+    },
+    "Currency" : {
+      "type" : "object",
+      "properties" : {
+        "IsoCode" : {
+          "type" : "string",
+          "description" : "The currency’s three-character ISO code."
+        }
+      }
+    },
+    "DeliveryType" : {
+      "type" : "object",
+      "properties" : {
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated opaque ID that uniquely identifies this resource."
+        },
+        "Name" : {
+          "type" : "string",
+          "description" : "The delivery type’s display name."
+        }
+      }
+    },
+    "FrequencyCapInterval" : {
+      "type" : "object",
+      "properties" : {
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated ID that uniquely identifies this resource."
+        },
+        "Name" : {
+          "type" : "string",
+          "description" : "The name of the interval."
+        }
+      }
+    },
+    "Industry" : {
+      "type" : "object",
+      "properties" : {
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated ID that uniquely identifies this resource."
+        },
+        "Name" : {
+          "type" : "string",
+          "description" : "The industry’s display name."
+        },
+        "ParentId" : {
+          "type" : "string",
+          "description" : "The ID of the sub-industry’s parent. Is NULL for the top-level parent."
+        },
+        "SubIndustries" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Industry"
+          },
+          "description" : "A list of sub-industries. The list is empty if the industry has no sub-industries."
+        }
+      }
+    },
+    "InventoryType" : {
+      "type" : "object",
+      "properties" : {
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated opaque ID that uniquely identifies this resource. (Max 36 characters)."
+        },
+        "Name" : {
+          "type" : "string",
+          "description" : "The ad format’s display name."
+        }
+      }
+    },
+    "Language" : {
+      "type" : "object",
+      "properties" : {
+        "IsoCode" : {
+          "type" : "string",
+          "description" : "The language’s two-character ISO code as specified in ISO 639-1."
+        }
+      }
+    },
+    "MaturityLevel" : {
+      "type" : "object",
+      "properties" : {
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated opaque ID that uniquely identifies this resource. (Max 36 characters)."
+        },
+        "Level" : {
+          "type" : "string",
+          "description" : "The accepted maturity level for the specified inventory.",
+          "enum" : [ "All", "Over12", "Mature", "NotSpecified" ]
+        }
+      }
+    },
+    "RateType" : {
+      "type" : "object",
+      "properties" : {
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated opaque ID that uniquely identifies this resource. (Max 36 characters)."
+        },
+        "Name" : {
+          "type" : "string",
+          "description" : "The rate type’s display name."
+        }
+      }
+    },
+    "Target" : {
+      "type" : "object",
+      "properties" : {
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated ID that identifies this resource."
+        },
+        "Name" : {
+          "type" : "string",
+          "description" : "The target category."
+        }
+      }
+    },
+    "TargetValue" : {
+      "type" : "object",
+      "properties" : {
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated ID that uniquely identifies this resource."
+        },
+        "Value" : {
+          "type" : "string",
+          "description" : "The target value."
+        },
+        "TargetId" : {
+          "type" : "string",
+          "description" : "A system-generated ID that identifies the target category that this value belongs to."
+        }
+      }
+    },
+    "Error" : {
+      "type" : "object",
+      "properties" : {
+        "ErrorCode" : {
+          "type" : "string",
+          "description" : "A symbolic string constant that identifies the error."
+        },
+        "Context" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          },
+          "description" : "A list of Publisher-defined key/value pairs that provide additional context about the error. For example, an ID that identifies a log entry."
+        },
+        "Link" : {
+          "type" : "string",
+          "description" : "A URL to additional help text that may help the caller solve the issue."
+        },
+        "ErrorMessage" : {
+          "type" : "string",
+          "description" : "A string that describes the error that occurred."
+        }
+      }
+    },
+    "Address" : {
+      "type" : "object",
+      "properties" : {
+        "City" : {
+          "type" : "string",
+          "description" : "The city name of an organization or contact for which this address is associated."
+        },
+        "Country" : {
+          "type" : "string",
+          "description" : "The country/region of an organization or contact for which this address is associated. Country must use a valid ISO 3166-1 country code."
+        },
+        "AddressLine1" : {
+          "type" : "string",
+          "description" : "The first line of the address of an organization or contact for which this address is associated."
+        },
+        "AddressLine2" : {
+          "type" : "string",
+          "description" : "The optional second line of the address ."
+        },
+        "PostalCode" : {
+          "type" : "string",
+          "description" : "The postal or ZIP code for the address."
+        },
+        "State" : {
+          "type" : "string",
+          "description" : "The state or province for the address."
+        }
+      }
+    },
+    "Contact" : {
+      "type" : "object",
+      "properties" : {
+        "Address" : {
+          "$ref" : "#/definitions/Address",
+          "description" : "The contact’s address"
+        },
+        "Email" : {
+          "type" : "string",
+          "description" : "The contact’s email address."
+        },
+        "Honorific" : {
+          "type" : "string",
+          "description" : "Honorific such as Mr. or Ms."
+        },
+        "Fax" : {
+          "type" : "string",
+          "description" : "The contact’s fax number."
+        },
+        "FirstName" : {
+          "type" : "string",
+          "description" : "The contact’s first name."
+        },
+        "LastName" : {
+          "type" : "string",
+          "description" : "The contact’s last name."
+        },
+        "Phone" : {
+          "type" : "string",
+          "description" : "The contact’s phone number."
+        },
+        "Title" : {
+          "type" : "string",
+          "description" : "The contact’s job title."
+        },
+        "Type" : {
+          "$ref" : "#/definitions/Contact",
+          "description" : "The type of contact that this resource represents."
+        }
+      }
+    },
+    "ProductAvails" : {
+      "type" : "object",
+      "properties" : {
+        "Availability" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "The quantity available for booking for the specified date range."
+        },
+        "Currency" : {
+          "$ref" : "#/definitions/Currency",
+          "description" : "The currency used to specify Price."
+        },
+        "ProductId" : {
+          "type" : "string",
+          "description" : "A system-generated opaque ID that uniquely identifies the product."
+        },
+        "Price" : {
+          "$ref" : "#/definitions/RateType",
+          "description" : "The product’s rate type determines the unit."
+        }
+      }
+    },
+    "ProductAvailsSearch" : {
+      "type" : "object",
+      "properties" : {
+        "AccountId" : {
+          "type" : "string",
+          "description" : "The ID of the account that identifies the agency and advertiser."
+        },
+        "Currency" : {
+          "$ref" : "#/definitions/Currency",
+          "description" : "The currency the product supports. If the publisher supports the option to filter product avails by currency, then only products that support select currency is returned. Otherwise, publisher returns duplicate product avails, each with different supported currencies."
+        },
+        "EndDate" : {
+          "type" : "string",
+          "description" : "The desired end date for inventory delivery. The date and time must be specified in UTC time using ISO 8601 formatting and must be later than StartDate."
+        },
+        "FrequencyCount" : {
+          "type" : "string",
+          "format" : "byte",
+          "description" : "The maximum number of times that a unique user may see ads during the interval specified within the FrequencyInterval setting for this object. If the product uses frequency capping, both FrequencyCount and FrequencyInterval must be set."
+        },
+        "FrequencyInterval" : {
+          "type" : "string",
+          "description" : "The interval within which the frequency count applies if frequency capping is used for the product. For example, if the frequency count is set to 3 and the interval set to a day, then ads for the product may be shown to a user no more than three times per day. If the product uses frequency capping, both FrequencyCount and FrequencyInterval must be set."
+        },
+        "Quantity" : {
+          "type" : "number",
+          "format" : "int64",
+          "description" : "The quantity of inventory units requested for the specified date range. This value will differ based on various cost types. For CPM, for example, the value would be in thousands of impressions. Leave field blank to return a product list with maximum availability for products specified. The publisher may set a maximum quantity limit."
+        },
+        "ProductIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          },
+          "description" : "A list of IDs that identify the products on which to get availability and pricing information. Product IDs are system-generated unique IDs for the Id property of each PRODUCT resource."
+        },
+        "StartDate" : {
+          "type" : "string",
+          "description" : "The desired start date for inventory delivery. The date and time must be specified in UTC ISO-8601 and must be later than current date and time."
+        },
+        "Targeting" : {
+          "$ref" : "#/definitions/Segment",
+          "description" : "The segments to target."
+        }
+      }
+    },
+    "ProductSearch" : {
+      "type" : "object",
+      "properties" : {
+        "AdFormatTypes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AdFormatType"
+          },
+          "description" : "One or more ad types. Return products that support one or more of the specified formats."
+        },
+        "Currency" : {
+          "$ref" : "#/definitions/Currency",
+          "description" : "The currency that the product supports. Return products that support the specified currency."
+        },
+        "DeliveryType" : {
+          "$ref" : "#/definitions/DeliveryType",
+          "description" : "The delivery type."
+        },
+        "Domain" : {
+          "type" : "string",
+          "description" : "The product’s domain."
+        },
+        "Geometry" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Size"
+          },
+          "description" : "One or more ad sizes."
+        },
+        "ProductTags" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          },
+          "description" : "One or more tags used to label products. Returns products that have product tags that exactly match one or more of the specified tags. A match occurs if the specified tag exactly matches the product’s tag (using a case insensitive comparison)."
+        }
+      }
+    },
+    "OrderSearch" : {
+      "type" : "object",
+      "properties" : {
+        "AccountId" : {
+          "type" : "string",
+          "description" : "The Id for an Account. OrderSearch returns all orders for a specified account ID."
+        },
+        "RequesterId" : {
+          "type" : "string",
+          "description" : "The RequesterId for a CHANGE REQUEST on any orders that list a change request. OrderSearch returns all orders on which the specified requester has made a change request."
+        },
+        "BookingStatus" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          },
+          "description" : "The booking status for lines. Returns all orders for which any of the order’s lines contain the specified booking status values."
+        }
+      }
+    },
+    "Size" : {
+      "type" : "object",
+      "properties" : {
+        "Height" : {
+          "type" : "integer",
+          "description" : "The height of accepted creative size in pixels."
+        },
+        "Width" : {
+          "type" : "integer",
+          "description" : "The width of accepted creative size in pixels."
+        }
+      }
+    },
+    "Segment" : {
+      "type" : "object",
+      "properties" : {
+        "Target" : {
+          "$ref" : "#/definitions/Target"
+        },
+        "TargetValues" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/TargetValue"
+          }
+        }
+      }
+    },
+    "Product" : {
+      "type" : "object",
+      "properties" : {
+        "ActiveDate" : {
+          "type" : "string",
+          "description" : "The date and time, in UTC, that the product may become part of the bookable inventory. Use ISO-8601 format for time and date."
+        },
+        "AdFormatTypes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AdFormatType"
+          },
+          "description" : "A list of ad types that the product supports."
+        },
+        "AllowNoCreative" : {
+          "type" : "boolean",
+          "description" : "A Boolean value that indicates whether line items assigned to this order may be booked before creative is assigned. A value of TRUE allows lines to be booked without creative assigned. Default value is FALSE and prevents lines from being booked when no creative is assigned."
+        },
+        "BasePrice" : {
+          "type" : "number",
+          "description" : "The product’s base retail price; this is not the rate card price. The actual price may be more if targeting is specified."
+        },
+        "Currency" : {
+          "$ref" : "#/definitions/Currency",
+          "description" : "Identifies the currency for BasePrice and MinSpend."
+        },
+        "DeliveryType" : {
+          "$ref" : "#/definitions/DeliveryType",
+          "description" : "The type of delivery."
+        },
+        "Description" : {
+          "type" : "string",
+          "description" : "The product’s description."
+        },
+        "Domain" : {
+          "type" : "string",
+          "description" : "The product’s domain. For example, yahoo.com."
+        },
+        "EstimatedDailyAvails" : {
+          "type" : "string",
+          "description" : "An estimated range of available daily impressions. The ranges should be of Thousands, Tens of Thousands, Hundreds of Thousands, and so on."
+        },
+        "Geometry" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Size"
+          },
+          "description" : "A list of ad format sizes that the product supports."
+        },
+        "HttpsCompatible" : {
+          "type" : "boolean",
+          "description" : "A Boolean value that determines whether the product supports creatives that can properly render on an HTML web page served over HTTPS."
+        },
+        "Icon" : {
+          "type" : "string",
+          "description" : "URL to a thumbnail icon of the product. May be used to display next to the product in the product catalog."
+        },
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated opaque ID that uniquely identifies this resource."
+        },
+        "InventoryType" : {
+          "$ref" : "#/definitions/InventoryType",
+          "description" : "A list of devices that the product may serve on. Values provided using INVENTORY TYPE reference data as specified in section 0.The default is Desktop."
+        },
+        "Languages" : {
+          "type" : "array",
+          "description" : "A list of creative languages that the product supports.",
+          "items" : {
+            "$ref" : "#/definitions/Language"
+          }
+        },
+        "LeadTime" : {
+          "type" : "number",
+          "description" : "The number of days (n) from today that a line that reference this product can begin running; the line’s start date must be equal to or later than today + n."
+        },
+        "Name" : {
+          "type" : "string",
+          "description" : "The product’s display name. The name must be unique."
+        },
+        "MaturityLevel" : {
+          "$ref" : "#/definitions/MaturityLevel",
+          "description" : "The maturity level of the publisher’s content."
+        },
+        "MaxDuration" : {
+          "type" : "number",
+          "description" : "The maximum number of days that the product may be booked for. The line must enforce the duration."
+        },
+        "MinDuration" : {
+          "type" : "number",
+          "description" : "The minimum number of days that the product must be booked for."
+        },
+        "MinSpend" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "The minimum amount of money that must be spent on this product in order to book it."
+        },
+        "Position" : {
+          "$ref" : "#/definitions/AdPosition",
+          "description" : "The position of the ad as a relative measure of visibility or prominence."
+        },
+        "ProductTags" : {
+          "type" : "string",
+          "description" : "List of tags used for searching the product catalog."
+        },
+        "RateType" : {
+          "$ref" : "#/definitions/RateType",
+          "description" : "The unit of measure that BasePrice is expressed in."
+        },
+        "RetirementDate" : {
+          "type" : "string",
+          "format" : "date",
+          "description" : "The date and time, in UTC, that the product may be removed from the bookable inventory. Use ISO-8601 format for time and date"
+        },
+        "TargetTypes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Target"
+          },
+          "description" : "A list of IDs that identify the types of targeting that the product supports. For example, DMA or Gender. Values provided using TARGET reference data as specified in section 0."
+        },
+        "TimeZone" : {
+          "type" : "string",
+          "description" : "The time zone that the product runs in."
+        },
+        "Url" : {
+          "type" : "string",
+          "description" : "A URL to the specification that describes the creative requirements."
+        }
+      }
+    },
+    "Account" : {
+      "type" : "object",
+      "properties" : {
+        "AdvertiserId" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "An ID that identifies the organization that is acting as the advertiser. Advertiser ID may be generated by the buyer (agency) or by the publisher if the advertiser is also the buyer. An advertiser that is representing itself must have an AdvertiserId and BuyerId that match."
+        },
+        "BuyerId" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "An ID that identifies the organization that is acting as the buyer. The Publisher generates the BuyerId. If the advertiser is performing their own buys, AdvertiserId and BuyerId must be the same."
+        },
+        "Id" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "A system-generated opaque ID that uniquely identifies the account."
+        },
+        "Name" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "The name of the account. Used for display purposes."
+        },
+        "ProviderData" : {
+          "type" : "string",
+          "format" : "clob",
+          "description" : "An opaque CLOB of provider-defined data. Providers may use this field as needed (for example, to store an ID that correlates this object with resources within their system).",
+          "maxLength" : 1000
+        }
+      }
+    },
+    "Assignment" : {
+      "type" : "object",
+      "properties" : {
+        "CreativeId" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "The ID of the creative to display when the line runs."
+        },
+        "Id" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "A system-generated opaque ID that uniquely identifies the assignment."
+        },
+        "LineId" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "The ID of the line that will display the creative."
+        },
+        "ProviderData" : {
+          "type" : "string",
+          "format" : "clob",
+          "maxLength" : 1000,
+          "description" : "An opaque blob of provider-defined data. Providers may use this field as needed (for example, to store an ID that correlates this object with resources within their system)."
+        },
+        "Status" : {
+          "type" : "string",
+          "description" : "A value that determines whether the creative serves. The following are the possible values.",
+          "enum" : [ "Active", "Inactive" ]
+        },
+        "Weight" : {
+          "type" : "string",
+          "format" : "byte",
+          "description" : "Determines how much the creative is displayed relative to the other creative assigned to the same line."
+        }
+      }
+    },
+    "Creative" : {
+      "type" : "object",
+      "properties" : {
+        "AccountId" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "The ID of the account that owns the creative."
+        },
+        "AdFormatType" : {
+          "$ref" : "#/definitions/AdFormatType",
+          "description" : "The ad’s format."
+        },
+        "AdRejectionReason" : {
+          "type" : "string",
+          "description" : "The reason why the creative audit did not approve the creative."
+        },
+        "AdStatus" : {
+          "type" : "string",
+          "description" : "A status value that indicates where in the audit process the creative is.",
+          "enum" : [ "Pending", "Approved", "Rejected" ]
+        },
+        "BackupFlashAsset" : {
+          "type" : "string",
+          "description" : "A base64 string that contains the backup Image in case the user’s browser does not support Flash. The image must be of one of the following mime types. (GIF, JPEG, PNG)"
+        },
+        "ClickUrl" : {
+          "type" : "string",
+          "description" : "The URL of a webpage that the user is taken to if they click the ad. The URL may be specified if AdFormatType is set to Flash, FlashExpandable, or Image."
+        },
+        "CreativeAsset" : {
+          "type" : "string",
+          "description" : "A string that contains the creative. The AdFormatType determines whether the string is a character string or a base64 string. Image and Flash creatives, must use base64 strings and all others (tags, text, and video) use character strings. If the creative is an image, it must be of one of the following mime types. (GIF, JPEG, PNG)"
+        },
+        "Geometry" : {
+          "$ref" : "#/definitions/Size",
+          "description" : "The options available for ad size are publisher-provided using the SIZE object."
+        },
+        "HttpsCompatible" : {
+          "type" : "boolean",
+          "description" : "A Boolean value that determines whether the creative can properly render on an HTML web page served over HTTPS. True indicates the creative is HTTPS-compatible. Defaults to False."
+        },
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated opaque ID that uniquely identifies this resource."
+        },
+        "Language" : {
+          "$ref" : "#/definitions/Language",
+          "description" : "The ISO 639-1 language code that identifies the language used in the ad. For example, if the ad uses English, the ISO code would be EN. Publisher-supported languages are provided using reference data."
+        },
+        "MaturityLevel" : {
+          "$ref" : "#/definitions/MaturityLevel",
+          "description" : "The maturity level of the creative content.",
+          "enum" : [ "All", "Over12", "Mature", "NotSpecified" ]
+        },
+        "Name" : {
+          "type" : "string",
+          "description" : "The display name of the creative."
+        },
+        "ProviderData" : {
+          "type" : "string",
+          "format" : "clob",
+          "maxLength" : 1000,
+          "description" : "An opaque CLOB of provider-defined data. Providers may use this field as needed (for example, to store an ID that correlates this object with resources within their system)."
+        }
+      }
+    },
+    "Line" : {
+      "type" : "object",
+      "properties" : {
+        "BookingStatus" : {
+          "type" : "string",
+          "description" : "A value that determines whether the line is booked and is capable of delivering ads.",
+          "enum" : [ "Draft", "PendingReservation", "Reserved", "PendingBooking", "Booked", "InFlight", "Finished", "Stopped", "Canceled", "Pause", "Expired", "Declined", "ChangePending" ]
+        },
+        "Comment" : {
+          "type" : "string",
+          "maxLength" : 255,
+          "description" : "User notes related to this line."
+        },
+        "Cost" : {
+          "$ref" : "#/definitions/Currency",
+          "description" : "The projected cost of the line is based on the specified quantity, rate and targeting. The actual cost (the amount billed) is based on the actual number of impressions. The cost is specified in the currency for the order. If the order uses a different currency than what the product uses, the cost for the line must be converted to the order’s currency. The cost is determined at the time the line is saved with the following statuses. Drafted, Reserved, or Booked."
+        },
+        "EndDate" : {
+          "type" : "string",
+          "description" : "The date and time that the line will stop. The date and time must be specified in UTC and conform to ISO 8601. If the time is missing, 11:59 PM is assumed. The line end date must be later than the line start date and should be less than or equal to the order’s end date. If the line end date is later than the order’s end date, the order’s end date should be extended to match the line’s end date."
+        },
+        "FrequencyCount" : {
+          "type" : "string",
+          "format" : "byte",
+          "description" : "The maximum number of times that a unique user must see ads from this line during the specified interval (see FrequencyInterval)."
+        },
+        "FrequencyInterval" : {
+          "type" : "string",
+          "maxLength" : 5,
+          "description" : "The interval that FrequencyCount applies to. For example, per day or per week."
+        },
+        "Id" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "A system-generated opaque ID that uniquely identifies this resource."
+        },
+        "Quantity" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "The quantity requested for the specified date range. This value will differ based on various cost types. For CPM, for examples, the value would be impressions. The line must contain a quantity before the user may reserve or book it. If the requested quantity is not available, reserving or booking the line must fail and bookingStatus must be set to Declined."
+        },
+        "Name" : {
+          "type" : "string",
+          "maxLength" : 200,
+          "description" : "The line’s display name. Should be unique."
+        },
+        "OrderId" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "The ID of the order that this line belongs to."
+        },
+        "ProductId" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "The ID of the product where the creatives run."
+        },
+        "ProviderData" : {
+          "type" : "string",
+          "format" : "clob",
+          "maxLength" : 1000,
+          "description" : "An opaque blob of provider-defined data. Providers may use this field as needed (for example, to store an ID that correlates this object with resources within their system)."
+        },
+        "Rate" : {
+          "$ref" : "#/definitions/Currency",
+          "description" : "The price per unit of impressions. For example, $10 per 1,000 impressions (CPM). The rate is determined each time the line is saved (added, updated, booked, or reserved)."
+        },
+        "RateType" : {
+          "type" : "object",
+          "description" : "The unit of measure for the Rate property. Values are provided using RATE TYPE reference data. The rate type is determined at the time the line is saved (added, updated, booked, or reserved)."
+        },
+        "ReservedExpiryDate" : {
+          "type" : "string",
+          "description" : "The date and time that the reserved inventory will expire. If the line is reserved, the expiry date must be set."
+        },
+        "StartDate" : {
+          "type" : "string",
+          "description" : "The date and time that the line will start. The date and time must be specified in UTC and conform to ISO 8601. If the time is missing, 12:00 AM is assumed. The date and time must be greater than or equal to now and should be greater than or equal to the order’s start date. If the line start date is earlier than the order’s start date, the order’s start date should be moved to match the line’s start date. Both dates must be later than the present day. Start dates that are in the past may not be updated."
+        },
+        "StateChangeReason" : {
+          "type" : "string",
+          "description" : "The reason why the state was changed by the publisher. The reason must be specified if, The publisher declined the booking or reservation. or The publisher or user canceled the flight."
+        },
+        "Targeting" : {
+          "$ref" : "#/definitions/Segment",
+          "description" : "The segments used to target users and determine product availability. For example, behavioral, age, and gender segments. The creative assigned to the LINE resource is display when the line includes user segments and the delivery engine can determine whether the user matches the specified segments."
+        },
+        "UsesExpandables" : {
+          "type" : "boolean",
+          "description" : "A Boolean value that indicates whether the line will be assigned expandable creatives. Used to determine availability. The default is false."
+        }
+      }
+    },
+    "Order" : {
+      "type" : "object",
+      "properties" : {
+        "AccountId" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "The ID of the account that identifies the advertiser and buyer that own the order."
+        },
+        "Brand" : {
+          "type" : "string",
+          "maxLength" : 25,
+          "description" : "A descriptive name for the brand being advertised."
+        },
+        "Budget" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "The order’s estimated budget. The budget is directional; it is not used to limit the amount of money that the order spends. To determine the projected spend based on quantity, aggregate the Cost property for each line of the order."
+        },
+        "Contacts" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Contact"
+          },
+          "description" : "The list of contacts to use for this order. This list of contacts is in addition to the buyer’s and advertiser’s list of contacts."
+        },
+        "Currency" : {
+          "$ref" : "#/definitions/Currency",
+          "description" : "The currency that all monetary properties of the order and lines are specified in. The currency is also used for billing and reporting."
+        },
+        "EndDate" : {
+          "type" : "string",
+          "format" : "date",
+          "maxLength" : 26,
+          "description" : "The date and time that the order will end. The end date is directional and may be updated by the publisher to match the latest end date found in the order’s lines. The date and time must be specified in UTC and conform to ISO 8601. If the time is missing, 11:59 PM is assumed. The end date must be later than the start date. End dates that have past cannot be updated."
+        },
+        "OrderExpiryDate" : {
+          "type" : "string",
+          "format" : "date",
+          "maxLength" : 26,
+          "description" : "The date and time using the ISO 8601 format for when the order expires. Publisher will only hold inventory up until the date and time indicated."
+        },
+        "Id" : {
+          "type" : "string",
+          "maxLength" : 36,
+          "description" : "A system-generated opaque ID that uniquely identifies this resource."
+        },
+        "Industry" : {
+          "$ref" : "#/definitions/Industry",
+          "description" : "The industry associated with the order. This industry may differ from the industry specified on the advertiser’s Organization object."
+        },
+        "Name" : {
+          "type" : "string",
+          "maxLength" : 100,
+          "description" : "The order’s display name. Must be unique within the account’s list of orders."
+        },
+        "OrderStatus" : {
+          "type" : "string",
+          "enum" : [ "PENDING", "APPROVED", "REJECTED" ]
+        },
+        "PackageOnly" : {
+          "type" : "boolean",
+          "description" : "Identifies whether the order is only available as a package or if specific items can be separated from the inventory. A value of TRUE means the inventory is only available as a package. A value of FALSE allows the buyer to select specific items from inventory."
+        },
+        "PreferredBillingMethod" : {
+          "type" : "string",
+          "maxLength" : 10,
+          "enum" : [ "Electronic", "Postal" ],
+          "description" : "The preferred billing method for this order. The default is Electronic."
+        },
+        "ProviderData" : {
+          "type" : "string",
+          "format" : "clob",
+          "maxLength" : 1000,
+          "description" : "An opaque CLOB of provider-defined data. Providers may use this field as needed (for example, to store an ID that correlates this object with resources within their system)."
+        },
+        "StartDate" : {
+          "type" : "string",
+          "format" : "date",
+          "maxLength" : 26,
+          "description" : "The date and time that the order will start. The start date is directional and may be updated by the publisher to match the earliest start date found in the order’s list of lines. The date and time must be specified in UTC and conform to ISO 8601. If the time is missing, 12:00 AM is assumed. When creating the order, the date and time must be greater than or equal to now. Start dates that have past may not be updated."
+        }
+      }
+    },
+    "Organization" : {
+      "type" : "object",
+      "properties" : {
+        "Address" : {
+          "$ref" : "#/definitions/Address",
+          "description" : "The organization’s corporate headquarters address."
+        },
+        "Contacts" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Contact"
+          },
+          "description" : "A list of one or more contacts within the organization."
+        },
+        "DisapprovalReason" : {
+          "type" : "string",
+          "maxLength" : 255,
+          "description" : "The reason why the organization was not registered. Must be specified if Status is Disapproved."
+        },
+        "Fax" : {
+          "type" : "string",
+          "description" : "The organization’s fax number."
+        },
+        "Id" : {
+          "type" : "string",
+          "description" : "A system-generated opaque ID that uniquely identifies this resource."
+        },
+        "Industry" : {
+          "$ref" : "#/definitions/Industry",
+          "description" : "An industry label for the organization."
+        },
+        "Name" : {
+          "type" : "string",
+          "maxLength" : 128,
+          "description" : "The organization’s display name."
+        },
+        "Phone" : {
+          "type" : "string",
+          "maxLength" : 20,
+          "description" : "The organization’s phone number."
+        },
+        "ProviderData" : {
+          "type" : "string",
+          "format" : "clob",
+          "maxLength" : 1000,
+          "description" : "An opaque CLOB (character large object) of provider-defined data. Providers may use this field as needed (for example, to store an ID that correlates this object with resources within their system). Note that any provider that edits this object may override the data in this field. The data should include a marker that you can identify to ensure the data is yours."
+        },
+        "Status" : {
+          "type" : "string",
+          "maxLength" : 15,
+          "description" : "A value that indicates the current state of the approval process. The approval process confirms the organization’s identity.",
+          "enum" : [ "Pending", "Approved", "Disapproved", "Limited" ]
+        },
+        "Url" : {
+          "type" : "string",
+          "maxLength" : 1024,
+          "description" : "A URL to the organization’s website."
+        }
+      }
+    }
+  }
+}
