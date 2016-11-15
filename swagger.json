@@ -21,7 +21,14 @@
           "type" : "string"
         }, {
           "name" : "AdvertiserId",
-          "description" : "Advertiser Identifer",
+          "description" : "Advertiser Id",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "maxLength" : 36
+        }, {
+          "name" : "BuyerId",
+          "description" : "Buyer Id",
           "in" : "query",
           "required" : false,
           "type" : "string",
