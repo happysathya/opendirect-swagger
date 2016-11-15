@@ -515,12 +515,10 @@
           "required" : true,
           "type" : "string"
         }, {
-          "name" : "Assignment",
-          "in" : "body",
+          "name" : "disable",
+          "in" : "query",
           "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/Assignment"
-          }
+          "allowEmptyValue" : true
         } ],
         "responses" : {
           "200" : {
