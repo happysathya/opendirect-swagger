@@ -130,7 +130,7 @@
           "format" : "int64"
         } ],
         "produces" : [ "application/json" ],
-        "tags" : [ "Account" ],
+        "tags" : [ "Accounts" ],
         "responses" : {
           "200" : {
             "description" : "A specifed account.",
