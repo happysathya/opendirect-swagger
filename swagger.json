@@ -2160,6 +2160,112 @@
             }
           }
         }
+      },
+      "put" : {
+        "summary" : "Updates the specified organization.",
+        "description" : "Updates the specified organization that belong to the user.",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "Organizations" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "path",
+          "required" : true,
+          "type" : "number",
+          "format" : "int64"
+        }, {
+          "name" : "Organization",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Organization"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated organization.",
+            "schema" : {
+              "$ref" : "#/definitions/Organization"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "Updates the specified organization.",
+        "description" : "Updates the specified organization that belong to the user.",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "Organizations" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "path",
+          "required" : true,
+          "type" : "number",
+          "format" : "int64"
+        }, {
+          "name" : "Organization",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Organization"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated organization.",
+            "schema" : {
+              "$ref" : "#/definitions/Organization"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
       }
     },
     "/products" : {
