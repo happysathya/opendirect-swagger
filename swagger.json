@@ -1561,7 +1561,7 @@
         }
       }
     },
-    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}?book" : {
+    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}/book" : {
       "put" : {
         "summary" : "Begins the booking process for the line.",
         "description" : "The booking process may be asynchronous.",
@@ -1588,13 +1588,6 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "book",
-          "in" : "query",
-          "required" : true,
-          "type" : "boolean",
-          "default" : true,
-          "allowEmptyValue" : true
         } ],
         "responses" : {
           "200" : {
@@ -1649,13 +1642,6 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "book",
-          "in" : "query",
-          "required" : true,
-          "type" : "boolean",
-          "default" : true,
-          "allowEmptyValue" : true
         } ],
         "responses" : {
           "200" : {
@@ -1685,7 +1671,7 @@
         }
       }
     },
-    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}?reserve" : {
+    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}/reserve" : {
       "put" : {
         "summary" : "Reserves the line.",
         "description" : "Reserves the line. The reserve process may be asynchronous. To reserve a line, the line must be in the Draft state. If successfully reserved, the line moves to the Reserved state; otherwise, it moves to Declined and StateChangedReason is set.",
@@ -1712,13 +1698,6 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "reserve",
-          "in" : "query",
-          "required" : true,
-          "type" : "boolean",
-          "default" : true,
-          "allowEmptyValue" : true
         } ],
         "responses" : {
           "200" : {
@@ -1773,13 +1752,6 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "reserve",
-          "in" : "query",
-          "required" : true,
-          "type" : "boolean",
-          "default" : true,
-          "allowEmptyValue" : true
         } ],
         "responses" : {
           "200" : {
@@ -1809,7 +1781,7 @@
         }
       }
     },
-    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}?cancel" : {
+    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}/cancel" : {
       "put" : {
         "summary" : "Cancels the line.",
         "description" : "Cancels the line. To cancel a line, the line must be in the Reserved, Booked, or InFlight state. If successfully canceled, the line moves to the Canceled state. If the status was InFlight, StateChangedReason is set.",
@@ -1836,13 +1808,6 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "cancel",
-          "in" : "query",
-          "required" : true,
-          "type" : "boolean",
-          "default" : true,
-          "allowEmptyValue" : true
         } ],
         "responses" : {
           "200" : {
@@ -1897,13 +1862,6 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "cancel",
-          "in" : "query",
-          "required" : true,
-          "type" : "boolean",
-          "default" : true,
-          "allowEmptyValue" : true
         } ],
         "responses" : {
           "200" : {
@@ -1933,7 +1891,7 @@
         }
       }
     },
-    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}?reset" : {
+    "/accounts/{accountId}/orders/{orderId}/lines/{lineId}/reset" : {
       "put" : {
         "summary" : "Resets a line back to the Draft state.",
         "description" : "Resets a line back to the Draft state. To reset a line, the line must be in the Reserved or Declined state.",
@@ -1960,13 +1918,6 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "reset",
-          "in" : "query",
-          "required" : true,
-          "type" : "boolean",
-          "default" : true,
-          "allowEmptyValue" : true
         } ],
         "responses" : {
           "200" : {
@@ -2021,13 +1972,6 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "reset",
-          "in" : "query",
-          "required" : true,
-          "type" : "boolean",
-          "default" : true,
-          "allowEmptyValue" : true
         } ],
         "responses" : {
           "200" : {
