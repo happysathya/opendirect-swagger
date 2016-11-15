@@ -1186,9 +1186,6 @@
         "responses" : {
           "200" : {
             "description" : "A specified product.",
-            "examples" : {
-              "application/json" : "{\n\t\t\"AdFormatTypes\": [\"Flash\", \"Tag\", \"Image\"],\n\t\t\"BasePrice\": 1.31,\n\t\t\"Currency\": \"USD\",\n\t\t\"DeliveryType\": \"Guaranteed\",\n\t\t\"Descripion\": \"A description of the product for display purposes\",\n\t\t\"Domain\": \"mydomain.com\",\n\t\t\"EstimatedDailyAvails\": \"Hundreds of Thousands\",\n\t\t\"Geometry\": [{\n\t\t\t\"Height\": 160,\n\t\t\t\"Width\": 600\n\t\t}],\n\t\t\"HttpsCompatible\": 0,\n\t\t\"Icon\": \"http://domain/path/icon.jpg\",\n\t\t\"Id\": \"456366\",\n\t\t\"InventoryType\": {\n\t\t\t\"Name\": \"Desktop\"\n\t\t},\n\t\t\"Languages\": [\"EN\"],\n\t\t\"Name\": \"Unique Product Name\",\n\t\t\"MaturityLevel\": {\n\t\t\t\"Level\": \"Over12\"\n\t\t},\n\t\t\"MaxDuration\": 30,\n\t\t\"MinDuration\": 1,\n\t\t\"MinSpend\": 30.00,\n\t\t\"Position\": \"AboveFold\",\n\t\t\"ProductTags\": \"Foo Bar Zoo\",\n\t\t\"RateType\": \"CPM\",\n\t\t\"TargetTypes\": [\"2342\", \"3355\"],\n\t\t\"TimeZone\": \"Eastern Standard Time\",\n\t\t\"Url\": \"http://domain/path/creativespec.aspx\"\n}"
-            },
             "schema" : {
               "$ref" : "#/definitions/Product"
             }
@@ -1238,9 +1235,6 @@
         "responses" : {
           "200" : {
             "description" : "An array of products",
-            "examples" : {
-              "application/json" : "{\n\t\"Products\": [{\n\t\t\"AdFormatTypes\": [\"Flash\", \"Tag\", \"Image\"],\n\t\t\"BasePrice\": 1.31,\n\t\t\"Currency\": \"USD\",\n\t\t\"DeliveryType\": \"Guaranteed\",\n\t\t\"Descripion\": \"A description of the product for display purposes\",\n\t\t\"Domain\": \"mydomain.com\",\n\t\t\"EstimatedDailyAvails\": \"Hundreds of Thousands\",\n\t\t\"Geometry\": [{\n\t\t\t\"Height\": 160,\n\t\t\t\"Width\": 600\n\t\t}],\n\t\t\"HttpsCompatible\": 0,\n\t\t\"Icon\": \"http://domain/path/icon.jpg\",\n\t\t\"Id\": \"456366\",\n\t\t\"InventoryType\": {\n\t\t\t\"Name\": \"Desktop\"\n\t\t},\n\t\t\"Languages\": [\"EN\"],\n\t\t\"Name\": \"Unique Product Name\",\n\t\t\"MaturityLevel\": {\n\t\t\t\"Level\": \"Over12\"\n\t\t},\n\t\t\"MaxDuration\": 30,\n\t\t\"MinDuration\": 1,\n\t\t\"MinSpend\": 30.00,\n\t\t\"Position\": \"AboveFold\",\n\t\t\"ProductTags\": \"Foo Bar Zoo\",\n\t\t\"RateType\": \"CPM\",\n\t\t\"TargetTypes\": [\"2342\", \"3355\"],\n\t\t\"TimeZone\": \"Eastern Standard Time\",\n\t\t\"Url\": \"http://domain/path/creativespec.aspx\"\n\t}]\n}"
-            },
             "schema" : {
               "type" : "array",
               "items" : {
