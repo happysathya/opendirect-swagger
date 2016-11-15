@@ -309,7 +309,8 @@
             }
           }
         }
-      }
+      },
+      "put|patch" : ""
     },
     "/products" : {
       "get" : {
