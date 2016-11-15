@@ -5,7 +5,7 @@
     "version" : "1.0"
   },
   "host" : "localhost:8080",
-  "schemes" : [ "https", "http" ],
+  "schemes" : [ "https" ],
   "paths" : {
     "/accounts" : {
       "get" : {
