@@ -19,6 +19,13 @@
           "in" : "header",
           "required" : true,
           "type" : "string"
+        }, {
+          "name" : "AdvertiserId",
+          "description" : "Advertiser Identifer",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "maxLength" : 36
         } ],
         "responses" : {
           "200" : {
