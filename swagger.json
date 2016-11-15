@@ -593,6 +593,216 @@
         }
       }
     },
+    "/accounts/{id}/creatives/{creativeId}" : {
+      "get" : {
+        "summary" : "Gets the specified creative.",
+        "description" : "Gets the specified creative that belong to the account.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "Creatives" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "creativeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The specified creative.",
+            "schema" : {
+              "$ref" : "#/definitions/Creative"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put" : {
+        "summary" : "Updates the specified creative.",
+        "description" : "Updates the specified creative that belong to the account.",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "Creatives" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "creativeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "Creative",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Creative"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated creative.",
+            "schema" : {
+              "$ref" : "#/definitions/Creative"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "Updates the specified creative.",
+        "description" : "Updates the specified creative that belong to the account.",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "Creatives" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "creativeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "Creative",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Creative"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The updated creative.",
+            "schema" : {
+              "$ref" : "#/definitions/Creative"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Deletes the specified creative.",
+        "description" : "Deletes the specified creative. May delete a creative only if it has no assignments.",
+        "tags" : [ "Creatives" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "creativeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
     "/products" : {
       "get" : {
         "summary" : "List of all products.",
