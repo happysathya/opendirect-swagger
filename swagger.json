@@ -2113,53 +2113,6 @@
             }
           }
         }
-      },
-      "post" : {
-        "summary" : "Adds an account.",
-        "description" : "The account resource associates an organization ID for a buyer with an organization ID for an advertiser. Account URIs enable account creation and account search.",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
-        "tags" : [ "Accounts" ],
-        "parameters" : [ {
-          "name" : "AccessToken",
-          "description" : "OAUTH Token",
-          "in" : "header",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "Account",
-          "in" : "body",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/Account"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Newly created account.",
-            "schema" : {
-              "$ref" : "#/definitions/Account"
-            }
-          },
-          "400" : {
-            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
-            "schema" : {
-              "$ref" : "#/definitions/Error"
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
-            "schema" : {
-              "$ref" : "#/definitions/Error"
-            }
-          },
-          "500" : {
-            "description" : "Internal server error. Return for server-related errors.",
-            "schema" : {
-              "$ref" : "#/definitions/Error"
-            }
-          }
-        }
       }
     },
     "/products" : {
