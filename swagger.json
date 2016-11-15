@@ -1120,6 +1120,117 @@
         }
       }
     },
+    "/accounts/{accountId}/orders/{orderId}/lines" : {
+      "get" : {
+        "summary" : "Gets a list of all lines.",
+        "description" : "Gets a list of all lines in the order.",
+        "produces" : [ "application/json" ],
+        "tags" : [ "OrderLines" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "orderId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of lines from the order.",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Line"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Adds a line to the order.",
+        "description" : "Adds a line to the order that belong to the account.",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "OrderLines" ],
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "accountId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "orderId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "Line",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Line"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Newly added line to the order.",
+            "schema" : {
+              "$ref" : "#/definitions/Line"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
     "/products" : {
       "get" : {
         "summary" : "List of all products.",
