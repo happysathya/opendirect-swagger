@@ -492,7 +492,7 @@
         }
       }
     },
-    "/accounts/{accountId}/assignments/{assignmentId}?disable" : {
+    "/accounts/{accountId}/assignments/{assignmentId}/disable" : {
       "put" : {
         "summary" : "Changes the status to “Inactive.”",
         "description" : "Prevents a creative from running or stops a creative that is currently running.",
@@ -514,13 +514,6 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "disable",
-          "in" : "query",
-          "required" : true,
-          "type" : "boolean",
-          "default" : true,
-          "allowEmptyValue" : true
         } ],
         "responses" : {
           "200" : {
@@ -570,13 +563,6 @@
           "in" : "path",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "disable",
-          "in" : "query",
-          "required" : true,
-          "type" : "boolean",
-          "default" : true,
-          "allowEmptyValue" : true
         } ],
         "responses" : {
           "200" : {
