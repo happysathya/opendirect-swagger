@@ -22,7 +22,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "List of all accounts",
+            "description" : "List of all accounts.",
             "schema" : {
               "type" : "array",
               "items" : {
@@ -73,6 +73,53 @@
         "responses" : {
           "200" : {
             "description" : "Newly created account.",
+            "schema" : {
+              "$ref" : "#/definitions/Account"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request. If request contains invalid data, or the requested action is not valid.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user is not authorized to make the request.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error. Return for server-related errors.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{id}" : {
+      "get" : {
+        "summary" : "Gets the specified account.",
+        "description" : "Gets the specified account for the given id.",
+        "parameters" : [ {
+          "name" : "AccessToken",
+          "description" : "OAUTH Token",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "number",
+          "format" : "int64"
+        } ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "Account" ],
+        "responses" : {
+          "200" : {
+            "description" : "A specifed account.",
             "schema" : {
               "$ref" : "#/definitions/Account"
             }
