@@ -975,7 +975,7 @@
           "required" : true,
           "type" : "string"
         }, {
-          "name" : "Order",
+          "name" : "order",
           "in" : "body",
           "required" : true,
           "schema" : {
