@@ -2757,7 +2757,8 @@
           "description" : "The currency that the product supports. Return products that support the specified currency."
         },
         "DeliveryType" : {
-          "$ref" : "#/definitions/DeliveryType"
+          "$ref" : "#/definitions/DeliveryType",
+          "description" : "The delivery type."
         },
         "Domain" : {
           "type" : "string",
@@ -3033,7 +3034,8 @@
           "description" : "The ID of the account that owns the creative."
         },
         "AdFormatType" : {
-          "$ref" : "#/definitions/AdFormatType"
+          "$ref" : "#/definitions/AdFormatType",
+          "description" : "The ad’s format."
         },
         "AdRejectionReason" : {
           "type" : "string",
@@ -3074,6 +3076,7 @@
         },
         "MaturityLevel" : {
           "$ref" : "#/definitions/MaturityLevel",
+          "description" : "The maturity level of the creative content.",
           "enum" : [ "All", "Over12", "Mature", "NotSpecified" ]
         },
         "Name" : {
@@ -3173,7 +3176,8 @@
           "description" : "The reason why the state was changed by the publisher. The reason must be specified if, The publisher declined the booking or reservation. or The publisher or user canceled the flight."
         },
         "Targeting" : {
-          "$ref" : "#/definitions/Segment"
+          "$ref" : "#/definitions/Segment",
+          "description" : "The segments used to target users and determine product availability. For example, behavioral, age, and gender segments. The creative assigned to the LINE resource is display when the line includes user segments and the delivery engine can determine whether the user matches the specified segments."
         },
         "UsesExpandables" : {
           "type" : "boolean",
@@ -3207,7 +3211,8 @@
           "description" : "The list of contacts to use for this order. This list of contacts is in addition to the buyer’s and advertiser’s list of contacts."
         },
         "Currency" : {
-          "$ref" : "#/definitions/Currency"
+          "$ref" : "#/definitions/Currency",
+          "description" : "The currency that all monetary properties of the order and lines are specified in. The currency is also used for billing and reporting."
         },
         "EndDate" : {
           "type" : "string",
@@ -3227,7 +3232,8 @@
           "description" : "A system-generated opaque ID that uniquely identifies this resource."
         },
         "Industry" : {
-          "$ref" : "#/definitions/Industry"
+          "$ref" : "#/definitions/Industry",
+          "description" : "The industry associated with the order. This industry may differ from the industry specified on the advertiser’s Organization object."
         },
         "Name" : {
           "type" : "string",
@@ -3266,7 +3272,8 @@
       "type" : "object",
       "properties" : {
         "Address" : {
-          "$ref" : "#/definitions/Address"
+          "$ref" : "#/definitions/Address",
+          "description" : "The organization’s corporate headquarters address."
         },
         "Contacts" : {
           "type" : "array",
@@ -3289,7 +3296,8 @@
           "description" : "A system-generated opaque ID that uniquely identifies this resource."
         },
         "Industry" : {
-          "$ref" : "#/definitions/Industry"
+          "$ref" : "#/definitions/Industry",
+          "description" : "An industry label for the organization."
         },
         "Name" : {
           "type" : "string",
