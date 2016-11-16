@@ -3106,7 +3106,8 @@
           "description" : "User notes related to this line."
         },
         "Cost" : {
-          "$ref" : "#/definitions/Currency",
+          "type" : "number",
+          "format" : "double",
           "description" : "The projected cost of the line is based on the specified quantity, rate and targeting. The actual cost (the amount billed) is based on the actual number of impressions. The cost is specified in the currency for the order. If the order uses a different currency than what the product uses, the cost for the line must be converted to the order’s currency. The cost is determined at the time the line is saved with the following statuses. Drafted, Reserved, or Booked."
         },
         "EndDate" : {
@@ -3155,7 +3156,8 @@
           "description" : "An opaque blob of provider-defined data. Providers may use this field as needed (for example, to store an ID that correlates this object with resources within their system)."
         },
         "Rate" : {
-          "$ref" : "#/definitions/Currency",
+          "type" : "number",
+          "format" : "double",
           "description" : "The price per unit of impressions. For example, $10 per 1,000 impressions (CPM). The rate is determined each time the line is saved (added, updated, booked, or reserved)."
         },
         "RateType" : {
