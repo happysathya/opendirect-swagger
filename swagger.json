@@ -4,7 +4,6 @@
     "title" : "OpenDirect-1.5.1-API",
     "version" : "1.0"
   },
-  "host" : "localhost:8080",
   "schemes" : [ "https" ],
   "paths" : {
     "/accounts" : {
@@ -3329,5 +3328,7 @@
         }
       }
     }
-  }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/happysathya/OpenDirectAPI/1.0"
 }
