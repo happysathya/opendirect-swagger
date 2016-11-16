@@ -4,6 +4,8 @@
     "title" : "OpenDirect-1.5.1-API",
     "version" : "1.0"
   },
+  "host" : "lgimsps2fh.execute-api.eu-west-1.amazonaws.com",
+  "basePath" : "/dev",
   "schemes" : [ "https" ],
   "paths" : {
     "/accounts" : {
