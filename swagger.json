@@ -10,7 +10,7 @@
     "/accounts" : {
       "get" : {
         "summary" : "Gets a list of accounts that the user has access to.",
-        "description" : "The account resource associates an organization ID for a buyer with an organization ID for an advertiser. Account URIs enable account creation and account search.",
+        "description" : "The account resource associates an organization ID for a buyer with an organization ID for an advertiser.",
         "produces" : [ "application/json" ],
         "tags" : [ "Accounts" ],
         "parameters" : [ {
