@@ -3271,8 +3271,7 @@
       "type" : "object",
       "properties" : {
         "Address" : {
-          "$ref" : "#/definitions/Address",
-          "description" : "The organization’s corporate headquarters address."
+          "$ref" : "#/definitions/Address"
         },
         "Contacts" : {
           "type" : "array",
@@ -3295,8 +3294,7 @@
           "description" : "A system-generated opaque ID that uniquely identifies this resource."
         },
         "Industry" : {
-          "$ref" : "#/definitions/Industry",
-          "description" : "An industry label for the organization."
+          "$ref" : "#/definitions/Industry"
         },
         "Name" : {
           "type" : "string",
