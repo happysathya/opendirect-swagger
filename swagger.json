@@ -3328,7 +3328,5 @@
         }
       }
     }
-  },
-  "host" : "virtserver.swaggerhub.com",
-  "basePath" : "/happysathya/OpenDirectAPI/1.0"
+  }
 }
