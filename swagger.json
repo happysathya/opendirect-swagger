@@ -2757,8 +2757,7 @@
           "description" : "The currency that the product supports. Return products that support the specified currency."
         },
         "DeliveryType" : {
-          "$ref" : "#/definitions/DeliveryType",
-          "description" : "The delivery type."
+          "$ref" : "#/definitions/DeliveryType"
         },
         "Domain" : {
           "type" : "string",
