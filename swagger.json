@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "title" : "OpenDirect 1.5.1 API",
+    "title" : "OpenDirect-1.5.1-API",
     "version" : "1.0"
   },
   "host" : "localhost:8080",
@@ -2110,7 +2110,7 @@
           "type" : "number",
           "format" : "int64"
         }, {
-          "name" : "Organization",
+          "name" : "body",
           "in" : "body",
           "required" : true,
           "schema" : {
@@ -2163,7 +2163,7 @@
           "type" : "number",
           "format" : "int64"
         }, {
-          "name" : "Organization",
+          "name" : "body",
           "in" : "body",
           "required" : true,
           "schema" : {
@@ -2496,7 +2496,7 @@
         "SubIndustries" : {
           "type" : "array",
           "items" : {
-            "$ref" : "#/definitions/Industry"
+            "type" : "object"
           },
           "description" : "A list of sub-industries. The list is empty if the industry has no sub-industries."
         }
@@ -2670,7 +2670,7 @@
           "description" : "The contact’s job title."
         },
         "Type" : {
-          "$ref" : "#/definitions/Contact",
+          "type" : "object",
           "description" : "The type of contact that this resource represents."
         }
       }
