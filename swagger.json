@@ -3231,8 +3231,7 @@
           "description" : "A system-generated opaque ID that uniquely identifies this resource."
         },
         "Industry" : {
-          "$ref" : "#/definitions/Industry",
-          "description" : "The industry associated with the order. This industry may differ from the industry specified on the advertiser’s Organization object."
+          "$ref" : "#/definitions/Industry"
         },
         "Name" : {
           "type" : "string",
