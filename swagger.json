@@ -2651,8 +2651,8 @@
           "description" : "A system-generated opaque ID that uniquely identifies the product."
         },
         "Price" : {
-          "$ref" : "#/definitions/RateType",
-          "description" : "The product’s rate type determines the unit."
+          "type" : "number",
+          "format" : "double"
         }
       }
     },
