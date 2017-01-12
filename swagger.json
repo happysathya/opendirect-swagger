@@ -457,7 +457,7 @@
         }
       }
     },
-    "/accounts/{accountId}/assignments/{assignmentId}/disable" : {
+    "/accounts/{accountId}/assignments/{assignmentId}?disable" : {
       "put" : {
         "summary" : "Changes the status to “Inactive.”",
         "description" : "Prevents a creative from running or stops a creative that is currently running.",
