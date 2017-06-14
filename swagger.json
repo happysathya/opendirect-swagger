@@ -11,30 +11,30 @@
     "/user/login" : {
       "post" : {
         "summary" : "User login.",
-        "description" : "Login using the provided username and password. Successful login returns a JWT token with validity of 10 hours."
-      },
-      "consumes" : [ "application/json" ],
-      "produces" : [ "application/json" ],
-      "tags" : [ "User" ],
-      "parameters" : [ {
-        "name" : "UserLogin",
-        "in" : "body",
-        "required" : true,
-        "schema" : {
-          "$ref" : "#/definitions/UserLogin"
-        }
-      } ],
-      "responses" : {
-        "200" : {
-          "description" : "A JWT token with validity of 10 hours.",
+        "description" : "Login using the provided username and password. Successful login returns a JWT token with validity of 10 hours.",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "User" ],
+        "parameters" : [ {
+          "name" : "UserLogin",
+          "in" : "body",
+          "required" : true,
           "schema" : {
-            "$ref" : "#/definitions/UserLoginResponse"
+            "$ref" : "#/definitions/UserLogin"
           }
-        },
-        "401" : {
-          "description" : "Unauthorized. Return if the user login is unsuccessful.",
-          "schema" : {
-            "$ref" : "#/definitions/UserLoginError"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A JWT token with validity of 10 hours.",
+            "schema" : {
+              "$ref" : "#/definitions/UserLoginResponse"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Return if the user login is unsuccessful.",
+            "schema" : {
+              "$ref" : "#/definitions/UserLoginError"
+            }
           }
         }
       }
