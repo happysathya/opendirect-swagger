@@ -8,6 +8,28 @@
   "basePath" : "/opendirect",
   "schemes" : [ "https" ],
   "paths" : {
+    "/user/login" : {
+      "post" : {
+        "summary" : "User login.",
+        "description" : "Login using the provided username and password. Successful login returns a id_token (JWT token) with validity of 10 hours."
+      },
+      "consumes" : [ "application/json" ],
+      "produces" : [ "application/json" ],
+      "tags" : [ "User" ],
+      "parameters" : [ {
+        "name" : "UserLogin",
+        "in" : "body",
+        "required" : true,
+        "schema" : {
+          "$ref" : "#/definitions/UserLogin"
+        }
+      } ],
+      "responses" : {
+        "200" : {
+          "description" : "A JWT token with validity of 10 hours."
+        }
+      }
+    },
     "/accounts" : {
       "get" : {
         "summary" : "Gets a list of accounts that the user has access to.",
