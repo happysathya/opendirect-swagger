@@ -30,6 +30,9 @@
           "schema" : {
             "$ref" : "#/definitions/UserLoginResponse"
           }
+        },
+        "401" : {
+          "description" : "Unauthorized. Return if the user login is unsuccessful."
         }
       }
     },
