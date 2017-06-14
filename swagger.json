@@ -11,7 +11,7 @@
     "/user/login" : {
       "post" : {
         "summary" : "User login.",
-        "description" : "Login using the provided username and password. Successful login returns a id_token (JWT token) with validity of 10 hours."
+        "description" : "Login using the provided username and password. Successful login returns a JWT token with validity of 10 hours."
       },
       "consumes" : [ "application/json" ],
       "produces" : [ "application/json" ],
@@ -32,7 +32,10 @@
           }
         },
         "401" : {
-          "description" : "Unauthorized. Return if the user login is unsuccessful."
+          "description" : "Unauthorized. Return if the user login is unsuccessful.",
+          "schema" : {
+            "$ref" : "#/definitions/UserLoginError"
+          }
         }
       }
     },
@@ -1146,6 +1149,37 @@
         "TargetId" : {
           "type" : "string",
           "description" : "A system-generated ID that identifies the target category that this value belongs to."
+        }
+      }
+    },
+    "UserLogin" : {
+      "type" : "object",
+      "properties" : {
+        "Username" : {
+          "type" : "string",
+          "descriptiion" : "The user's associated email address."
+        },
+        "Password" : {
+          "type" : "string",
+          "description" : "The password."
+        }
+      }
+    },
+    "UserLoginResponse" : {
+      "type" : "object",
+      "properties" : {
+        "Id_token" : {
+          "type" : "string",
+          "description" : "A JWT token which will expire in 10 hours."
+        }
+      }
+    },
+    "UserLoginError" : {
+      "type" : "object",
+      "properties" : {
+        "Message" : {
+          "type" : "string",
+          "description" : "A brief summary of what went wrong while login."
         }
       }
     },
